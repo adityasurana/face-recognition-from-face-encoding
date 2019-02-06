@@ -27,7 +27,7 @@ Install cv2    (openCV library)
 
    with open('yourname_faces.dat', 'wb') as f:
  
-     pickle.dump(yourname_face_encoding, f)
+      pickle.dump(yourname_face_encoding, f)
    
    You can save as many file as you want for different images.
       
