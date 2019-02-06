@@ -2,31 +2,40 @@
 A facial recognition system is a technology capable of identifying or verifying a person from a digital image or a video frame from a video source. There are multiple methods in which facial recognition systems work, but in general, they work by comparing selected facial features from given image with faces within a database. It is also described as a Biometric Artificial Intelligence based application that can uniquely identify a person by analysing patterns based on the person's facial textures and shape.
 
 # What the project does?
-Project contain 2 python files, one with name- "saving_face-encoding_intofile.py" that saves the face encodings of the person who's image it is reading and another named-**"face_recogition(reading encodings and interpreting in livestreaming).py" **
+Project contain 2 python files, one with name- "saving_face-encoding_intofile.py" that saves the face encodings of the person who's image it is reading and another named-"face_recogition(reading encodings and interpreting in livestreaming).py" that reads the face_encoding file and compare that face encoding with live faces(live streaming), if the face encoding in the file matches with the person in front it returns the name of the person given in the code.
 
-# Why the project is useful?
-The project has a vast application.
-It can be used to take attendance in classes,offices,any institutes. It reduces the need for manual labour which is prone to human errors and time consuming.
 
-It can be used for security checks and accessing any document.
+# Requirements:-
+Install face_recognition (library)
 
-It can be used for criminal identification etc.,
+Install numpy (if you don't have)
+
+Install cv2    (openCV library)
 
 # How users can get started with the project?
-face_recognition.py file has the code to recognise the face of any person.You simply have to load the photo and give the name you want to see if your face is recognised.Like in my case I loaded one of my photo by giving path["C:/Users/AJAY/Desktop/adi1.jpg"] of that photo:-
+1) Download the repository
 
- aditya_image = face_recognition.load_image_file("C:/Users/AJAY/Desktop/adi1.jpg")
- 
- aditya_face_encoding = face_recognition.face_encodings(aditya_image)[0],  and here I encoded that variable aditya_image in which I loaded  my image.
- 
- known_face_encodings = [
-    aditya_face_encoding
-]
-Here in known_face_encodings[] list you can write the variable you created for encodings.
+2) Open file ""saving_face-encoding_intofile.py" , in this file give the path to image of who's face is to recognise           like("/home/pi/Desktop/") in my case:-
 
-known_face_names = [
-    "Aditya Surana"
-]
+aditya_image = face_recognition.load_image_file("/home/pi/Desktop/adi1.jpg")
+
+You can use yourname_image instead of aditya_image and yourname_face_encoding instead of aditya_face_encoding but remember should also change below[.face_encodings(yourname_image)]:-
+
+aditya_face_encoding= face_recognition.face_encodings(aditya_image)[0]
+
+you can give whatever name you want to give to face encoding file it will be saved in .dat format:-
+
+with open('yourname_faces.dat', 'wb') as f:
+ 
+   pickle.dump(yourname_face_encoding, f)
+   
+ You can save as many file as you want for different images.
+      
+3) Open file "face_recogition(reading encodings and interpreting in livestreaming).py" from pickle.load() load the file by giving the name of face encoding file. You can open as many face encoding files as you want.
+
+known_face_encodings = [ yourname_face_encoding ] Here in known_face_encodings[] list you can write the variable you created for encodings.
+
+known_face_names = [ "yourname" ]
 
 Here in known_face_name[] list you can add your name you want to see while camera is recognising you.
 
